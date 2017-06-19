@@ -1,2 +1,2 @@
 # JavaFrame
-:computer:个人笔记，Java框架
+Java框架
