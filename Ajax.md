@@ -278,7 +278,7 @@ varState = xmlHttpRequest.readyState
 此属性返回请求的当前状态； 它的值有五个：             
 
 ```
-属性名                        值                                                    含义
+属性名      值                     含义
 readyState  0    未初始化，即对象已创建，但尚未调用open方法
             1    初始化，即对象已经创建，但尚未调用send方法
             2    发送数据，即send方法已经调用，但当前状态和http头未知
@@ -296,7 +296,7 @@ varStatus = xmlHttpRequest.status
 注意：返回类型是长整型的；                      
 http的状态码是很多的；比如：                   
 ```
-属性名                                    值                                                                   含义
+属性名          值                         含义
 status          200                 请求正确返回
                 404                 请求找不到访问对象
 ```
