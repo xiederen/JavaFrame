@@ -152,14 +152,14 @@ String basePath = request.getScheme()
 
 ### Struts2异常机制     
 通过在 `<action>` 元素中设置 `<exception-mapping>` 元素；这种是局部异常映射，只对该Action有效；           
-#### <exception-mapping> :  
+#### `<exception-mapping> :`  
 
 局部异常映射。            
 指定在Action方法抛出指定异常的时候跳转到哪个指定的结果视图；        
 
 使用Struts2的异常机制后，就不需要手动去`try-catch`了；
 
-##### <exception-mapping> 元素的属性：
+##### `<exception-mapping> 元素的属性：`
 
 result属性：发生异常后要跳转到的结果视图；            
 exception属性 ：指定了一个Exception的全类名；         
@@ -224,4 +224,4 @@ Struts的异常机制：
 ```
  <excpetion-mapping> 局部异常
  <global-exception-mappings> 全局异常
- ```
+```
