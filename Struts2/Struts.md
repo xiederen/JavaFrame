@@ -1,4 +1,4 @@
-# Struts2：
+# Struts2总结：
 Struts2是一种基于MVC的Web框架，能将请求和展现的视图分开；   
 通过 `struts.xml` 核心配置，通过Action控制业务；通过 Result 匹配相应的结果视图；       
 
@@ -213,10 +213,12 @@ exception属性 ：指定了一个Exception的全类名；
 总结：
 namespace：
 代表包的命名空间；
-默认取值为 空字符串 " " ，建议还是以模块为其命名；
+默认取值为 空字符串` " "` ，建议还是以模块为其命名；
 
 Action搜索顺序；
 
 Struts的异常机制：
+```
  <excpetion-mapping> 局部异常
  <global-exception-mappings> 全局异常
+ ```
