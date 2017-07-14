@@ -123,8 +123,8 @@ from Student where sid between 11070100 and 11070200
 from Student where sname like '%飞'
 from Student where sname like '_ik*'
 ```
-> "_"匹配单个字符，"%"匹配任意长度字符       
-> "_"不可以进行汉字的匹配，"%"可以进行汉字的匹配。 
+ `_`匹配单个字符，"%"匹配任意长度字符           
+ `_`不可以进行汉字的匹配，"%"可以进行汉字的匹配。      
 
 
 获取返回结果：       
