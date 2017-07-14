@@ -43,12 +43,12 @@ List<Login> result = null;
 SessionFactory sessionFactory = null;
 Session session = null;
 try {
-       sessionFactory = new Configuration().configure().                                           buildSessionFactory();
+       sessionFactory = new Configuration().configure().buildSessionFactory();
        session = sessionFactory.openSession();
        Criteria criteria = session.createCriteria(Login.class);
        result = criterial.list();
        for(Login login:result) {
-        System.out.println("用户名：" +Login.getUsername()+"密              码："+Login.getPasssword()+"年龄："+Login.getAge());
+        System.out.println("用户名：" +Login.getUsername()+"密码："+Login.getPasssword()+"年龄："+Login.getAge());
 }
 } catch (HibernateException e) {
  e.printStackTrace();
@@ -251,7 +251,7 @@ Login user = new Login();
 user.setAge(21);
 
 try {
-       sessionFactory = new Configuration().configure().                                           buildSessionFactory();
+       sessionFactory = new Configuration().configure(). buildSessionFactory();
        session = sessionFactory.openSession();
        Criteria criteria = session.createCriteria(Login.class);
        
@@ -259,7 +259,7 @@ try {
 
        result = criterial.list();
        for(Login login:result) {
-        System.out.println("用户名：" +Login.getUsername()+"密              码："+Login.getPasssword()+"年龄："+Login.getAge());
+        System.out.println("用户名：" +Login.getUsername()+"密 码："+Login.getPasssword()+"年龄："+Login.getAge());
 }
 } catch (HibernateException e) {
  e.printStackTrace();
@@ -481,7 +481,7 @@ try {
 ##### 执行NativeSQL并获取结果
 
 使用SQLQuery执行本地SQL：          
-大家都知道HQL作为Hibernate的查询语言，提供了丰富的特性和强大的数据查询功能；不过，         HQL并不能涵盖所有查询特性，有时我们不得不借助SQL以达到我们期望的目标；      
+大家都知道HQL作为Hibernate的查询语言，提供了丰富的特性和强大的数据查询功能；不过，HQL并不能涵盖所有查询特性，有时我们不得不借助SQL以达到我们期望的目标；      
 这就是接下来要学习的 NativeSQL；        
 
 >NativeSQL， 也就是 本地SQL        
@@ -505,11 +505,11 @@ SessionFactory sessionFactory = null;
 Session session = null;
 
 try {
-  sessionFactory = new Configuration().configure().                                buildSessionFactory();
+  sessionFactory = new Configuration().configure(). buildSessionFactory();
   session = sessionFactory.openSession();
 
   String sql = "select {l.*} from login l where l.username='马达' ";
-  SQLQuery query = session.createSQLQuery(sql).addEntity                      ("l",Login.class);
+  SQLQuery query = session.createSQLQuery(sql).addEntity("l",Login.class);
   List result = query.list();
 
   Iterator it = result.iterator();
@@ -580,7 +580,7 @@ SessionFactory sessionFactory = null;
 Session session = null;
 
 try {
-  sessionFactory = new Configuration().configure().                                buildSessionFactory();
+  sessionFactory = new Configuration().configure().buildSessionFactory();
   session = sessionFactory.openSession();
 
   Query query = session.getNamedQuery("findUser");
@@ -803,7 +803,7 @@ session.close();
 ```
 
 在这段代码中，我们仍然使用for循环来完成10万次插入操作，只是在循环中加入了一个if判断；      
-判断条件是，够20条记录就将这20条记录批量插入到数据库中，并且清空Session缓存中的实例；         20是之前设置的JDBC单次批量处理的数目。但这不是必须的，也可以设置为其他的数字。           
+判断条件是，够20条记录就将这20条记录批量插入到数据库中，并且清空Session缓存中的实例；20是之前设置的JDBC单次批量处理的数目。但这不是必须的，也可以设置为其他的数字。           
 
 这就是插入数据的批量处理方式；             
 
@@ -852,21 +852,21 @@ session.close();
 存储过程保存数据库中；           
 
 第一个是向login表中插入记录的存储过程：       
-```
+```sql
 create or replace procedure login_insert(username in varchar,password in varchar,age in number) as begin     
 insert into login (password,age,username) values (username,password,age);
 end;
 ```
 
 第二个是更新表中记录的存储过程：          
-```
+```sql
 create or replace procedure login_Update(a in number) as begin
 update login set age=a where username='Tom';
 end;
 ```
 
 第三个是删除表中记录的存储过程：        
-```
+```sql
 create or replace produre login_delete(uname in varchar) as begin    
 delete from login where USERNAME = uname;    
 end;      
@@ -881,7 +881,8 @@ Session session = new Configuration().configure().                              
 Transaction tran  = session.beginTransaction();
 
 CallableStatement cst = session.connection().prepareCall("{
-									call login_insert(?,?,?)}");
+	call login_insert(?,?,?)
+}");
 cst.setString(1,"aaa");
 cst.setString(2,"2222222");
 cst.setLong(3,21);
