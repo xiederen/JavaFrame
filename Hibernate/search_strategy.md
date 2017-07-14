@@ -168,8 +168,9 @@ List<Grade> list = session.createQuery("from Grade").list();
 我们需要在班级类的映射文件中进行配置；        
 需要在映射students属性的<set>标签内添加lazy属性，并将其值设置为true，表示延迟加载；因为默认就是延迟加载，所以我们也可以不添加lazy属性；          
 配置代码         
-``	`
+```	`
 <set name="students" cascade="save-update" inverse="true" lazy="true">
+
 或者
 <set name="students" cascade="save-update" inverse="true" >
 ```
